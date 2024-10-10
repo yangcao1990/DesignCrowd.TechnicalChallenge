@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34723.18
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesignCrowd.TechnicalChallenge", "DesignCrowd.TechnicalChallenge\DesignCrowd.TechnicalChallenge.csproj", "{D1DED763-9382-4F04-801D-D168B00AF707}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesignCrowd.TechnicalChallenge.Tests", "DesignCrowd.TechnicalChallenge.Tests\DesignCrowd.TechnicalChallenge.Tests.csproj", "{5EF0E147-124F-4AEC-B8CF-3826D65963C9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D1DED763-9382-4F04-801D-D168B00AF707}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1DED763-9382-4F04-801D-D168B00AF707}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1DED763-9382-4F04-801D-D168B00AF707}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1DED763-9382-4F04-801D-D168B00AF707}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5EF0E147-124F-4AEC-B8CF-3826D65963C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5EF0E147-124F-4AEC-B8CF-3826D65963C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5EF0E147-124F-4AEC-B8CF-3826D65963C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5EF0E147-124F-4AEC-B8CF-3826D65963C9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {28CE7F47-52A7-46D1-9EE7-F7CCDF9D301E}
+	EndGlobalSection
+EndGlobal
