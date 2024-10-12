@@ -9,6 +9,21 @@ namespace DesignCrowd.TechnicalChallenge
             return date.DayOfWeek != DayOfWeek.Saturday && date.DayOfWeek != DayOfWeek.Sunday;
         }
 
+        private static bool FirstDateIsNotBeforeSecondDate(DateTime first, DateTime second)
+        {
+            return first >= second;
+        }
+
+        private static DateTime GetStartDate(DateTime date)
+        {
+            return date.AddDays(1).Date;
+        }
+
+        private static DateTime GetEndDate(DateTime date)
+        {
+            return date.AddDays(-1).Date;
+        }
+
         /// <summary>
         /// Calculates the number of weekdays between firstDate and secondDate, excluding firstDate and secondDate
         /// <list type="bullet">
@@ -28,13 +43,13 @@ namespace DesignCrowd.TechnicalChallenge
         /// </returns>
         public int WeekdaysBetweenTwoDates(DateTime firstDate, DateTime secondDate)
         {
-            if (firstDate >= secondDate)
+            if (FirstDateIsNotBeforeSecondDate(firstDate, secondDate))
             {
                 return 0;
             }
 
-            var startDate = firstDate.AddDays(1).Date;
-            var endDate = secondDate.AddDays(-1).Date;
+            var startDate = GetStartDate(firstDate);
+            var endDate = GetEndDate(secondDate);
 
             var weekdays = 0;
 
@@ -82,13 +97,13 @@ namespace DesignCrowd.TechnicalChallenge
                 return publicHolidays.Any(holiday => holiday.Date == date.Date);
             }
 
-            if (firstDate >= secondDate)
+            if (FirstDateIsNotBeforeSecondDate(firstDate, secondDate))
             {
                 return 0;
             }
 
-            var startDate = firstDate.AddDays(1).Date;
-            var endDate = secondDate.AddDays(-1).Date;
+            var startDate = GetStartDate(firstDate);
+            var endDate = GetEndDate(secondDate);
 
             var businessDays = 0;
 
@@ -136,13 +151,13 @@ namespace DesignCrowd.TechnicalChallenge
                                                holiday.GetAdditionalDate(date.Year - 1, holidays) == date.Date);
             }
 
-            if (firstDate >= secondDate)
+            if (FirstDateIsNotBeforeSecondDate(firstDate, secondDate))
             {
                 return 0;
             }
 
-            var startDate = firstDate.AddDays(1).Date;
-            var endDate = secondDate.AddDays(-1).Date;
+            var startDate = GetStartDate(firstDate);
+            var endDate = GetEndDate(secondDate);
 
             var businessDays = 0;
 
