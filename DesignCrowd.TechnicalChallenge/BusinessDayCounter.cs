@@ -1,4 +1,6 @@
-﻿namespace DesignCrowd.TechnicalChallenge
+﻿using DesignCrowd.TechnicalChallenge.Models;
+
+namespace DesignCrowd.TechnicalChallenge
 {
     public class BusinessDayCounter
     {
@@ -101,6 +103,59 @@
             return businessDays;
         }
 
+        /// <summary>
+        /// Calculates the number of business days between firstDate and secondDate, excluding firstDate and secondDate
+        /// <list type="bullet">
+        ///     <item>
+        ///         <description>
+        ///             Weekdays are Monday, Tuesday, Wednesday, Thursday, Friday, but excluding any dates which appear
+        ///             in the <see cref="PublicHoliday"/>
+        ///         </description>
+        ///     </item>
+        ///     <item>
+        ///         <description>The returned count <b>does not</b> include either firstDate or secondDate.</description>
+        ///     </item>
+        /// </list>
+        /// </summary>
+        /// <param name="firstDate">The date to start from, excl. from the count</param>
+        /// <param name="secondDate">The date to stop, excl. from the count</param>
+        /// <param name="publicHolidays">A list of <see cref="PublicHoliday"/> indicating public holidays</param>
+        /// <returns>
+        /// Number of business days between firstDate and secondDate, excluding firstDate and secondDate;
+        /// returns 0 if secondDate is equal to or before firstDate
+        /// </returns>
+        public int BusinessDaysBetweenTwoDates(DateTime firstDate, DateTime secondDate, IEnumerable<PublicHoliday>? publicHolidays)
+        {
+            var holidays = publicHolidays?.Select(holiday => holiday).ToList() ?? new List<PublicHoliday>();
+
+            bool IsPublicHoliday(DateTime date)
+            {
+                return holidays.Any(holiday => holiday.GetDate(date.Year) == date.Date ||
+                                               holiday.GetAdditionalDate(date.Year, holidays) == date.Date ||
+                                               holiday.GetDate(date.Year - 1) == date.Date ||
+                                               holiday.GetAdditionalDate(date.Year - 1, holidays) == date.Date);
+            }
+
+            if (firstDate >= secondDate)
+            {
+                return 0;
+            }
+
+            var startDate = firstDate.AddDays(1).Date;
+            var endDate = secondDate.AddDays(-1).Date;
+
+            var businessDays = 0;
+
+            for (var date = startDate; date <= endDate; date = date.AddDays(1))
+            {
+                if (IsWeekday(date) && !IsPublicHoliday(date))
+                {
+                    businessDays++;
+                }
+            }
+
+            return businessDays;
+        }
 
     }
 }
